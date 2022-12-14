@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Layout } from "../components/common/layouts/layouts";
 import styles from "../styles/Home.module.css";
+import Form from "./components/form";
 
 const Home: NextPage = () => {
   return (
@@ -14,9 +15,7 @@ const Home: NextPage = () => {
         </Heading>
       </Box>
       <Box>
-        <Button colorScheme="blue">
-          Select File
-        </Button>
+        <Form />
       </Box>
     </Layout>
   );
