@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, IconButton, Spacer, Button } from "@chakra-ui/react";
+import { Flex, Box, IconButton, Spacer, Button, Heading, Container } from "@chakra-ui/react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 export const Header: React.FC = () => (
@@ -13,12 +13,9 @@ export const Header: React.FC = () => (
     px={8}
   >
     <Box>
-      <IconButton
-        aria-label="back"
-        color="black"
-        rounded="full"
-        icon={<ChevronLeftIcon />}
-      />
+      <Heading as='h3' size='lg'>
+        Chord-Analysis
+      </Heading>
     </Box>
     <Spacer />
     <Box>
