@@ -1,27 +1,28 @@
 import React from "react";
-import { Flex, Box, IconButton, Spacer, Button, Heading, Container } from "@chakra-ui/react";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
+import NextLink from "next/link";
+import { Flex, Box, IconButton, Spacer, Button, Heading, Container, useColorModeValue, useColorMode } from "@chakra-ui/react";
+import { ChevronLeftIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
-export const Header: React.FC = () => (
-  <Flex
-    as="header"
-    position="fixed"
-    top={0}
-    width="full"
-    shadow="sm"
-    py={4}
-    px={8}
-  >
-    <Box>
-      <Heading as='h3' size='lg'>
-        Chord-Analysis
-      </Heading>
-    </Box>
-    <Spacer />
-    <Box>
-      <Button disabled colorScheme="blue">
-        保存済み
-      </Button>
-    </Box>
-  </Flex>
-);
+export const Header: React.FC = () => {
+    // 追加 カラーモードを切り替える
+    const { colorMode, toggleColorMode } = useColorMode();
+    return (
+        /* 変更　ライトモードでgray.100,ダークモードでgray.900とする。 */
+        <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+            <Container maxW="container.lg">
+                <Flex as="header" py="4" justifyContent="space-between" alignItems="center">
+                    <NextLink href="/" passHref>
+                        {/* 変更 ライトモードでgray.600、ダークモードでwhiteとする */}
+                        <Heading as='h1' fontSize="2xl" cursor="pointer" color={useColorModeValue('gray.600', 'white')}>
+                            Chord-Analysis
+                        </Heading>
+                    </NextLink>
+                    {/* 追加 切り替えアイコン */}
+                    <Button size='lg' onClick={toggleColorMode}>
+                        {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                    </Button>
+                </Flex>
+            </Container>
+        </Box>
+    );
+}
