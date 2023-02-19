@@ -25,18 +25,31 @@ const Form = (props: Props) => {
     console.log("On Submit: ", props.file?.name);
     const header = {
       headers: {
-        "Content-Type": "application/json;charset=UTF-8",
-        // "Access-Control-Allow-Origin": "*",
+        "Content-Type": "multipart/form-data;charset=UTF-8",
       },
     };
-    const data: any = new FormData();
-    data.append("file", props.file);
-    const postImageUri =
-      "https://chord-analysis-backend-iq5232hggq-uc.a.run.app/upload";
+    const data = new FormData();
+    console.log(props.file);
+    data.append("file", props.file as File);
+    const postFileUri = "https://chord-analysis-backend-iq5232hggq-uc.a.run.app/upload";
     axios
-      .post(postImageUri, data, header)
+      .post(postFileUri, data, header)
       .then((res) => {
         console.log("upload success");
+        // create file link in browser's memory
+        const binaryData = [res.data];
+        const href = window.URL.createObjectURL(new Blob(binaryData, {type: "text/xml"}))
+
+        // create "a" HTML element with href to file & click
+        const link = document.createElement("a");
+        link.href = href;
+        link.setAttribute("download", `chordadd_${props.file?.name}.musicxml`); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+
+        // clean up "a" element & remove ObjectURL
+        document.body.removeChild(link);
+        URL.revokeObjectURL(href);
       })
       .catch((err) => {
         console.log(err);
