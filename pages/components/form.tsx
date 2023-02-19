@@ -26,8 +26,7 @@ const Form = (props: Props) => {
     const header = {
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
-        "Access-Control-Allow-Headers": "Authorization, X-XSRF-TOKEN",
-        "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Origin": "*",
       },
     };
     const data: any = new FormData();
@@ -79,6 +78,7 @@ const Form = (props: Props) => {
         <InputGroup>
           <input
             type={"file"}
+            name="file"
             multiple={false}
             hidden
             // accept={accept}
