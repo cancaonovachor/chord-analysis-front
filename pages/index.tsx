@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <Divider borderColor={"gray.300"} />
         <Box h="20px" />
         <Text fontSize="md">
-          MusicXMLファイル楽譜から、コード情報を推定し、自動的に書き込みます。
+          MusicXMLファイル楽譜に、コード情報を自動で書き込みます。
         </Text>
         <Box h="20px" />
         <Form {...states} />
