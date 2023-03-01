@@ -6,11 +6,8 @@ export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => (
   <>
     <Header />
     <Flex bg="gray.100" h="100vh">
-    <Container maxW="container.lg">
-      {children}
-      </Container>
+      <Container maxW="container.lg">{children}</Container>
     </Flex>
-    
   </>
   // {/* <Footer /> */}
 );

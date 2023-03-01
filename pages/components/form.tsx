@@ -1,11 +1,13 @@
 import { Dispatch, ReactNode, SetStateAction, useRef, useState } from "react";
 import {
+  Box,
   Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Icon,
   InputGroup,
+  Text,
 } from "@chakra-ui/react";
 import { useForm, UseFormRegisterReturn } from "react-hook-form";
 import { ArrowUpIcon } from "@chakra-ui/icons";
@@ -31,14 +33,17 @@ const Form = (props: Props) => {
     const data = new FormData();
     console.log(props.file);
     data.append("file", props.file as File);
-    const postFileUri = "https://chord-analysis-backend-iq5232hggq-uc.a.run.app/upload";
+    const postFileUri =
+      "https://chord-analysis-backend-iq5232hggq-uc.a.run.app/upload";
     axios
       .post(postFileUri, data, header)
       .then((res) => {
         console.log("upload success");
         // create file link in browser's memory
         const binaryData = [res.data];
-        const href = window.URL.createObjectURL(new Blob(binaryData, {type: "text/xml"}))
+        const href = window.URL.createObjectURL(
+          new Blob(binaryData, { type: "text/xml" })
+        );
 
         // create "a" HTML element with href to file & click
         const link = document.createElement("a");
@@ -98,15 +103,42 @@ const Form = (props: Props) => {
             ref={inputRef}
             onChange={onChangeFile}
           />
-          <Button leftIcon={<ArrowUpIcon />} onClick={onClickButton}>
-            {!!props.filename ? props.filename : "Upload"}
-          </Button>
+          <Box
+            w="100%"
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            position={"relative"}
+          >
+            {!!props.filename ? (
+              <>
+                <Button
+                  mt={"4px"}
+                  colorScheme="blue"
+                  onClick={onSubmit}
+                  position={"absolute"}
+                >
+                  <b>変換する</b>
+                </Button>
+                <Text ml="248px" mt="12px">
+                  {props.filename}
+                </Text>
+              </>
+            ) : (
+              <Button
+                w="168px"
+                colorScheme="blue"
+                leftIcon={<ArrowUpIcon />}
+                onClick={onClickButton}
+              >
+                {"ファイルを選択"}
+              </Button>
+            )}
+          </Box>
         </InputGroup>
 
         <FormErrorMessage>{errorMessage ? errorMessage : ""}</FormErrorMessage>
       </FormControl>
-
-      <button onClick={onSubmit}>Submit</button>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { Box, Button, Divider, Heading, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -13,12 +13,19 @@ const Home: NextPage = () => {
   const states = { filename, setFileName, file, setFile };
   return (
     <Layout>
-      <Box>
-        <Heading as="h4" size="md" my="10px">
-          Convert Your MusicXML Files
-        </Heading>
-      </Box>
-      <Box>
+      <Box textAlign={"center"}>
+        <Box h="60px" />
+        <Box>
+          <Heading as="h2" my="10px">
+            Chord-Analysis（β版）
+          </Heading>
+        </Box>
+        <Divider borderColor={"gray.300"} />
+        <Box h="20px" />
+        <Text fontSize="md">
+          MusicXMLファイル楽譜から、コード情報を推定し、自動的に書き込みます。
+        </Text>
+        <Box h="20px" />
         <Form {...states} />
       </Box>
     </Layout>
