@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.1.0
       - run: pnpm build && pnpm export
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
