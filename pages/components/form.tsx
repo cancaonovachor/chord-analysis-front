@@ -103,30 +103,16 @@ const Form = (props: Props) => {
             ref={inputRef}
             onChange={onChangeFile}
           />
-          <Box
-            w="100%"
-            display={"flex"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            position={"relative"}
-          >
+          <Box w="100%" textAlign={"center"}>
             {!!props.filename ? (
               <>
-                <Button
-                  mt={"4px"}
-                  colorScheme="blue"
-                  onClick={onSubmit}
-                  position={"absolute"}
-                >
-                  <b>変換する</b>
+                <Button colorScheme="blue" onClick={onSubmit}>
+                  <b>クリックで変換</b>
                 </Button>
-                <Text ml="248px" mt="12px">
-                  {props.filename}
-                </Text>
+                <Text mt="4px">{props.filename}</Text>
               </>
             ) : (
               <Button
-                w="168px"
                 colorScheme="blue"
                 leftIcon={<ArrowUpIcon />}
                 onClick={onClickButton}
