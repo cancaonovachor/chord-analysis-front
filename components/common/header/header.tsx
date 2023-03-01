@@ -27,11 +27,14 @@ export const Header: React.FC = () => {
             </Heading>
           </NextLink>
           <Box w="50px" />
-          <NextLink href="https://cancaonovachor.com" passHref>
+          {/* <NextLink href="https://cancaonovachor.com" passHref>
             <Text fontSize="sm" cursor="pointer" color={"gray.600"}>
               使用方法
             </Text>
-          </NextLink>
+          </NextLink> */}
+          <Text fontSize="sm" color={"gray.600"}>
+            使用方法（作成中）
+          </Text>
         </Flex>
       </Container>
     </Box>

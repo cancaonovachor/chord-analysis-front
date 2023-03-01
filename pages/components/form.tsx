@@ -67,7 +67,7 @@ const Form = (props: Props) => {
 
   const validateFiles = (value: File) => {
     const fsMb = value.size / (1024 * 1024);
-    const MAX_FILE_SIZE = 1;
+    const MAX_FILE_SIZE = 10;
     if (fsMb > MAX_FILE_SIZE) {
       setErrorMessage("ファイルサイズは10MB以下のものを選択ください");
       return false;
@@ -99,7 +99,7 @@ const Form = (props: Props) => {
             name="file"
             multiple={false}
             hidden
-            // accept={accept}
+            accept={".musicxml"}
             ref={inputRef}
             onChange={onChangeFile}
           />
