@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Layout } from "../components/common/layouts/layouts";
 import styles from "../styles/Home.module.css";
-import Form from "./components/form";
+import FileUploadForm from "../components/common/fileUploadForm";
 import { useState } from "react";
 
 const Home: NextPage = () => {
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           MusicXMLファイル楽譜に、コード情報を自動で書き込みます。
         </Text>
         <Box h="20px" />
-        <Form {...states} />
+        <FileUploadForm {...states} />
       </Box>
     </Layout>
   );

@@ -20,7 +20,7 @@ type Props = {
   setFile: Dispatch<SetStateAction<File | undefined>>;
 };
 
-const Form = (props: Props) => {
+const FileUploadForm = (props: Props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = () => {
@@ -129,4 +129,4 @@ const Form = (props: Props) => {
   );
 };
 
-export default Form;
+export default FileUploadForm;
