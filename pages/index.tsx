@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Heading, Link, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -24,6 +24,14 @@ const Home: NextPage = () => {
         <Box h="20px" />
         <Text fontSize="md">
           MusicXMLファイル楽譜に、コード情報を自動で書き込みます。
+        </Text>
+        <Text fontSize="sm">
+          <Link
+            color="gray.600"
+            href="https://storage.googleapis.com/chord-analysis-samples/chordslist.musicxml"
+          >
+            サンプルファイル
+          </Link>
         </Text>
         <Box h="20px" />
         <FileUploadForm {...states} />
